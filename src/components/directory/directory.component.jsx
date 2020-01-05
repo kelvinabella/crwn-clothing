@@ -6,8 +6,8 @@ import "./directory.styles.scss";
 import SECTIONS_DATA from "../../assets/sections.data";
 
 class Directory extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       sections: SECTIONS_DATA
