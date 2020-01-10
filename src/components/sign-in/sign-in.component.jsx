@@ -5,6 +5,7 @@ import FormInput from "../form-input/form-input.component";
 import "./sign-in.styles.scss";
 import CustomButton from "../custom-button/custom-button.component";
 import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { auth } from "../../firebase/firebase.utils";
 
 class SignIn extends Component {
   constructor(props) {
@@ -16,14 +17,22 @@ class SignIn extends Component {
     };
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
+    const { email, password } = this.state;
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+
+      this.setState({ emai: "", password: "" });
+    } catch (error) {
+      console.error(error);
+    }
 
     this.setState({ email: "", password: "" });
   };
 
   handleChange = event => {
-    const { name, value } = event;
+    const { name, value } = event.target;
 
     this.setState({ [name]: value });
   };
