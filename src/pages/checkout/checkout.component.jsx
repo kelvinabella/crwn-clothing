@@ -1,6 +1,5 @@
 import React from "react";
 
-import "./checkout.styles.scss";
 import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
 import {
@@ -9,32 +8,39 @@ import {
 } from "../../redux/cart/cart.selectors";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import StripeCheckoutButton from "../../components/stripe-button/stripe-button.component";
+import {
+  ChecOutPageContainer,
+  CheckOutHeaderContainer,
+  HeaderBlockContainer,
+  TotalPriceContainer,
+  TestWarningContainer
+} from "./checkout.styles.jsx";
 
 const CheckoutPage = ({ cartItems, total }) => {
   return (
-    <div className="checkout-page">
-      <div className="checkout-header">
-        <div className="header-block">
+    <ChecOutPageContainer>
+      <CheckOutHeaderContainer>
+        <HeaderBlockContainer>
           <span>Product</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlockContainer>
+        <HeaderBlockContainer>
           <span>Description</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlockContainer>
+        <HeaderBlockContainer>
           <span>Quantity</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlockContainer>
+        <HeaderBlockContainer>
           <span>Price</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlockContainer>
+        <HeaderBlockContainer>
           <span>Remove</span>
-        </div>
-      </div>
+        </HeaderBlockContainer>
+      </CheckOutHeaderContainer>
       {cartItems.map(cartItem => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-      <div className="total">Total $ {total}</div>
-      <div className="test-warning">
+      <TotalPriceContainer>Total $ {total}</TotalPriceContainer>
+      <TestWarningContainer>
         *Please use the following test credit card for payments*
         <br />
         NUMBER: 4242424242424242
@@ -42,9 +48,9 @@ const CheckoutPage = ({ cartItems, total }) => {
         CVC: Any 3 digits
         <br />
         DATE: Any future date
-      </div>
+      </TestWarningContainer>
       <StripeCheckoutButton price={total} />
-    </div>
+    </ChecOutPageContainer>
   );
 };
 
