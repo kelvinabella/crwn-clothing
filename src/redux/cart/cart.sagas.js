@@ -3,7 +3,6 @@ import UserActionTypes from "../user/user.types";
 import { clearCart } from "./cart.actions";
 
 export function* clearCartItemsOnSignOut() {
-  yield console.log("Sdfsdfds");
   yield put(clearCart());
 }
 
