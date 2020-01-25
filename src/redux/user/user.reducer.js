@@ -6,10 +6,16 @@ const INITIAL_STATE = {
 
 const userReducer = (currenState = INITIAL_STATE, action) => {
   switch (action.type) {
-    case UserActionTypes.SET_CURRENT_USER:
+    case UserActionTypes.SIGN_IN_SUCCESS:
       return {
         ...currenState,
-        currentUser: action.payload
+        currentUser: action.payload,
+        error: null
+      };
+    case UserActionTypes.SIGN_IN_FAILURE:
+      return {
+        ...currenState,
+        error: action.payload
       };
     default:
       return currenState;
