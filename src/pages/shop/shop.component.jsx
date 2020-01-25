@@ -3,7 +3,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { fetchCollectionsStart } from "../../redux/shop/shop.action";
+import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
 import CollectionsOverviewContainer from "../../components/collection-overview/collection-overview.container";
 import CollectionsContainer from "../collections/collections.container";
 
